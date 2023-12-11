@@ -25,7 +25,7 @@ def match_image():
 
 
     # Important parameters to modify if you wish to improve the feature matching performance. 
-    resize = [800] # Resize the image to this size before processing. Set to None to disable resizing.
+    resize = [200] # Resize the image to this size before processing. Set to None to disable resizing.
     superglue = 'outdoor' # The SuperGlue model to use. Either 'indoor' or 'outdoor'.
     max_keypoints = -1 # -1 keep all keypoints  
     keypoint_threshold = 0.01 # Remove keypoints with low confidence. Set to -1 to keep all keypoints.
@@ -34,7 +34,7 @@ def match_image():
     match_threshold = 0.5 # Remove matches with low confidence. Set to -1 to keep all matches.
     show_keypoints = True # Show the detected keypoints.
     no_display = False
-    force_cpu = False # Force CPU mode. It is significantly slower, but allows the model to run on systems withou dedicated GPU.
+    force_cpu = True # Force CPU mode. It is significantly slower, but allows the model to run on systems withou dedicated GPU.
     
    
     if len(resize) == 2 and resize[1] == -1:
@@ -43,7 +43,7 @@ def match_image():
         print('Will resize to {}x{} (WxH)'.format(
             resize[0], resize[1]))
     elif len(resize) == 1 and resize[0] > 0:
-        print('Will resize max dimension to {}'.format(resize[0]))
+        print('Will resize max dimension to --- {}'.format(resize[0]))
     elif len(resize) == 1:
         print('Will not resize images')
     else:
@@ -51,7 +51,7 @@ def match_image():
 
     
     device = 'cuda' if torch.cuda.is_available() and not force_cpu else 'cpu'
-    print('Running inference on device \"{}\"'.format(device))
+    print('Running inference on device ::: \"{}\"'.format(device))
     config = {
         'superpoint': {
             'nms_radius': nms_radius,
@@ -218,6 +218,13 @@ def match_image():
             print('\nWriting image to {}'.format(out_file))
             cv2.imwrite(out_file, out)
 
+    # Print parameters before returning
+    print("satellite_map_index:", satellite_map_index)
+    print("center:", center)
+    print("array Length of located_image:", len(located_image), located_image)
+    print("features_mean:", features_mean)
+    print("last_frame:", len(last_frame), last_frame)
+    print("max_matches:", max_matches)
 
     cv2.destroyAllWindows()
     vs.cleanup()

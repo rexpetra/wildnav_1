@@ -177,14 +177,18 @@ for drone_image in drone_images_list:
     # Iterate through all the rotations, in this case only one rotation
     for rot in rotations:
         
+        print("current REXY rot :", rot, rotations, len(rotations))
+
         # Write the query photo to the map folder
         cv2.imwrite(map_path + "1_query_image.png", photo)
 
         #Call superglue wrapper function to match the query image to the map
         satellite_map_index_new, center_new, located_image_new, features_mean_new, query_image_new, feature_number = superglue_utils.match_image()
         
-        # If the drone image was located in the map and the number of features is greater than the previous best match, then update the best match
-        # Sometimes the pixel center returned by the perspective transform exceeds 1, discard the resuls in that case
+        # If the drone image was located in the map and the number of features is greater than the 
+        # previous best match, then update the best match
+        # Sometimes the pixel center returned by the perspective transform exceeds 1, discard the 
+        # resuls in that case
         if (feature_number > max_features and center_new[0] < 1 and center_new[1] < 1):
             satellite_map_index = satellite_map_index_new
             center = center_new

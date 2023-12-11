@@ -25,7 +25,7 @@ def match_image():
 
 
     # Important parameters to modify if you wish to improve the feature matching performance. 
-    resize = [200] # Resize the image to this size before processing. Set to None to disable resizing.
+    resize = [800] # Resize the image to this size before processing. Set to None to disable resizing.
     superglue = 'outdoor' # The SuperGlue model to use. Either 'indoor' or 'outdoor'.
     max_keypoints = -1 # -1 keep all keypoints  
     keypoint_threshold = 0.01 # Remove keypoints with low confidence. Set to -1 to keep all keypoints.

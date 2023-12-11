@@ -221,7 +221,7 @@ def match_image():
     # Print parameters before returning
     print("satellite_map_index:", satellite_map_index)
     print("center:", center)
-    print("array Length of located_image:", len(located_image), located_image)
+    print("array Length of located_image:", located_image)
     print("features_mean:", features_mean)
     print("last_frame:", len(last_frame), last_frame)
     print("max_matches:", max_matches)

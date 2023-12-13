@@ -25,7 +25,7 @@ def match_image():
 
 
     # Important parameters to modify if you wish to improve the feature matching performance. 
-    resize = [800] # Resize the image to this size before processing. Set to None to disable resizing.
+    resize = [428] # Resize the image to this size before processing. Set to None to disable resizing.
     superglue = 'outdoor' # The SuperGlue model to use. Either 'indoor' or 'outdoor'.
     max_keypoints = -1 # -1 keep all keypoints  
     keypoint_threshold = 0.01 # Remove keypoints with low confidence. Set to -1 to keep all keypoints.
@@ -220,11 +220,12 @@ def match_image():
 
     # Print parameters before returning
     print("satellite_map_index:", satellite_map_index)
-    print("center:", center)
-    print("array Length of located_image:", located_image)
+    print("center:", center)    
+    # print("located_image:", located_image)
     print("features_mean:", features_mean)
-    print("last_frame:", len(last_frame), last_frame)
+    # print("last_frame:", len(last_frame), last_frame)
     print("max_matches:", max_matches)
+
 
     cv2.destroyAllWindows()
     vs.cleanup()
